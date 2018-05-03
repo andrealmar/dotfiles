@@ -246,6 +246,11 @@
   (add-hook 'term-mode-hook (lambda()
         (setq yas-dont-activate t)))
 
+;;; Clear the eshell buffer.
+(defun eshell/clear ()
+   (let ((eshell-buffer-maximum-lines 0)) (eshell-truncate-buffer)))
+
+
 ;;;
 ;;; Options
 ;;;
