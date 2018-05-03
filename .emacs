@@ -243,6 +243,8 @@
   :init
   (yas-global-mode 1))
 
+  (add-hook 'term-mode-hook (lambda()
+        (setq yas-dont-activate t)))
 
 ;;;
 ;;; Options
@@ -250,6 +252,7 @@
 
 (setq inhibit-startup-message t)
 (setq package-enable-at-startup nil)
+(setq make-backup-files nil)
 (column-number-mode t)
 (delete-selection-mode t)
 (show-paren-mode t)
@@ -262,6 +265,21 @@
 (require 'recentf)
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
+
+;; nlinum
+(use-package nlinum-relative
+    :config
+    ;; something else you want
+    (nlinum-relative-setup-evil)
+    (add-hook 'prog-mode-hook 'nlinum-relative-mode))
+
+
+(require 'nlinum-relative)
+(nlinum-relative-setup-evil)                    ;; setup for evil
+(add-hook 'prog-mode-hook 'nlinum-relative-mode)
+(setq nlinum-relative-redisplay-delay 0)      ;; delay
+(setq nlinum-relative-current-symbol "->")      ;; or "" for display current line number
+(setq nlinum-relative-offset 0)                 ;; 1 if you want 0, 2, 3...
 
 ;; y/n instead of yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -300,7 +318,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (color-identifiers-mode flycheck-yamllint yaml-mode go-autocomplete company-go yasnippet which-key use-package try tao-theme smex select-themes pyenv-mode py-isort projectile org-bullets nyan-mode markdown-mode magit iedit ido-vertical-mode flycheck counsel company-anaconda auto-complete ace-window))))
+    (gitlab-ci-mode-flycheck flycheck-gometalinter nlinum color-identifiers-mode flycheck-yamllint yaml-mode go-autocomplete company-go yasnippet which-key use-package try tao-theme smex select-themes pyenv-mode py-isort projectile org-bullets nyan-mode markdown-mode magit iedit ido-vertical-mode flycheck counsel company-anaconda auto-complete ace-window))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
