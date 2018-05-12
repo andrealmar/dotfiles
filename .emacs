@@ -246,11 +246,6 @@
   (add-hook 'term-mode-hook (lambda()
         (setq yas-dont-activate t)))
 
-;;; Clear the eshell buffer.
-(defun eshell/clear ()
-   (let ((eshell-buffer-maximum-lines 0)) (eshell-truncate-buffer)))
-
-
 ;;;
 ;;; Options
 ;;;
@@ -265,6 +260,11 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+
+;;; Clear the eshell buffer.
+ (defun eshell/clear ()
+    (let ((eshell-buffer-maximum-lines 0)) (eshell-truncate-buffer)))
 
 ;; recent files
 (require 'recentf)
@@ -321,9 +321,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(eshell-output-filter-functions
+   (quote
+    (eshell-handle-control-codes eshell-handle-ansi-color eshell-watch-for-password-prompt)))
  '(package-selected-packages
    (quote
-    (gitlab-ci-mode-flycheck flycheck-gometalinter nlinum color-identifiers-mode flycheck-yamllint yaml-mode go-autocomplete company-go yasnippet which-key use-package try tao-theme smex select-themes pyenv-mode py-isort projectile org-bullets nyan-mode markdown-mode magit iedit ido-vertical-mode flycheck counsel company-anaconda auto-complete ace-window))))
+    (eshell-prompt-extras eshell-git-prompt gitlab-ci-mode-flycheck flycheck-gometalinter nlinum color-identifiers-mode flycheck-yamllint yaml-mode go-autocomplete company-go yasnippet which-key use-package try tao-theme smex select-themes pyenv-mode py-isort projectile org-bullets nyan-mode markdown-mode magit iedit ido-vertical-mode flycheck counsel company-anaconda auto-complete ace-window))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
