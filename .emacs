@@ -7,7 +7,7 @@
 (require 'package)
 
 (add-to-list 'package-archives
-             '("MELPA Stable" . "https://stable.melpa.org/packages/") t)
+             '("MELPA" . "https://melpa.org/packages/") t)
 (package-initialize)
 
 ;; Use the value of $PATH constructed at shell's creation
@@ -24,6 +24,9 @@
         )
 )
 (when window-system (set-exec-path-from-shell-PATH))
+
+;; use standard keys for undo cut copy paste
+(cua-mode 1)
 
 ;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
