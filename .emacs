@@ -28,6 +28,10 @@
 ;; use standard keys for undo cut copy paste
 (cua-mode 1)
 
+;; Alchemist
+(unless (package-installed-p 'alchemist)
+  (package-install 'alchemist))
+
 ;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -324,12 +328,39 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(ansi-color-names-vector
+   ["#E8E8E8" "#3C3C3C" "#616161" "#0E0E0E" "#252525" "#3C3C3C" "#171717" "#0E0E0E"])
  '(eshell-output-filter-functions
    (quote
     (eshell-handle-control-codes eshell-handle-ansi-color eshell-watch-for-password-prompt)))
+ '(fci-rule-color "#171717")
  '(package-selected-packages
    (quote
-    (eshell-prompt-extras eshell-git-prompt gitlab-ci-mode-flycheck flycheck-gometalinter nlinum color-identifiers-mode flycheck-yamllint yaml-mode go-autocomplete company-go yasnippet which-key use-package try tao-theme smex select-themes pyenv-mode py-isort projectile org-bullets nyan-mode markdown-mode magit iedit ido-vertical-mode flycheck counsel company-anaconda auto-complete ace-window))))
+    (alchemist kaolin-themes eshell-prompt-extras eshell-git-prompt gitlab-ci-mode-flycheck flycheck-gometalinter nlinum color-identifiers-mode flycheck-yamllint yaml-mode go-autocomplete company-go yasnippet which-key use-package try tao-theme smex select-themes pyenv-mode py-isort projectile org-bullets nyan-mode markdown-mode magit iedit ido-vertical-mode flycheck counsel company-anaconda auto-complete ace-window)))
+ '(vc-annotate-background "#0E0E0E")
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#616161")
+     (40 . "#9E9E9E")
+     (60 . "#9E9E9E")
+     (80 . "#C3C3C3")
+     (100 . "#C3C3C3")
+     (120 . "#DADADA")
+     (140 . "#DADADA")
+     (160 . "#E8E8E8")
+     (180 . "#E8E8E8")
+     (200 . "#E8E8E8")
+     (220 . "#F1F1F1")
+     (240 . "#F1F1F1")
+     (260 . "#F1F1F1")
+     (280 . "#F6F6F6")
+     (300 . "#F6F6F6")
+     (320 . "#F6F6F6")
+     (340 . "#FAFAFA")
+     (360 . "#FAFAFA"))))
+ '(vc-annotate-very-old-color "#DADADA"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
