@@ -44,6 +44,10 @@
 ;;  :ensure t
 ;;  :config (exec-path-from-shell-initialize))
 
+(require 'go-autocomplete)
+(require 'auto-complete-config)
+(ac-config-default)
+
 (use-package iedit
   :ensure t)
 
@@ -338,7 +342,7 @@
  '(fci-rule-color "#171717")
  '(package-selected-packages
    (quote
-    (alchemist kaolin-themes eshell-prompt-extras eshell-git-prompt gitlab-ci-mode-flycheck flycheck-gometalinter nlinum color-identifiers-mode flycheck-yamllint yaml-mode go-autocomplete company-go yasnippet which-key use-package try tao-theme smex select-themes pyenv-mode py-isort projectile org-bullets nyan-mode markdown-mode magit iedit ido-vertical-mode flycheck counsel company-anaconda auto-complete ace-window)))
+    (flymake-go go-mode go elnode kubernetes-evil flymake-yaml flycheck-elixir helm-company alchemist kaolin-themes eshell-prompt-extras eshell-git-prompt gitlab-ci-mode-flycheck flycheck-gometalinter nlinum color-identifiers-mode flycheck-yamllint yaml-mode go-autocomplete company-go yasnippet which-key use-package try tao-theme smex select-themes pyenv-mode py-isort projectile org-bullets nyan-mode markdown-mode magit iedit ido-vertical-mode flycheck counsel company-anaconda auto-complete ace-window)))
  '(vc-annotate-background "#0E0E0E")
  '(vc-annotate-color-map
    (quote
