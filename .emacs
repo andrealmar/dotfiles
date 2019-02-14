@@ -28,10 +28,6 @@
 ;; use standard keys for undo cut copy paste
 (cua-mode 1)
 
-;; Alchemist
-(unless (package-installed-p 'alchemist)
-  (package-install 'alchemist))
-
 ;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
