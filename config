@@ -144,7 +144,7 @@ bindsym $mod+Ctrl+Left workspace prev
 set $ws1 1 Terminal 
 set $ws2 2 Editor 
 set $ws3 3 Browser 
-set $ws4 4 Franz 
+set $ws4 4 Chat 
 set $ws5 5 Music 
 set $ws6 6 File Explorer 
 

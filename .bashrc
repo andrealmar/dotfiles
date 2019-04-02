@@ -152,7 +152,6 @@ if [ -f '/opt/google-cloud-sdk/path.bash.inc' ]; then source '/opt/google-cloud-
 if [ -f '/opt/google-cloud-sdk/completion.bash.inc' ]; then source '/opt/google-cloud-sdk/completion.bash.inc'; fi
 
 
-
 # show git branch
 source /usr/share/git/completion/git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
