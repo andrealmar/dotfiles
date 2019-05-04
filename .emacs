@@ -33,6 +33,10 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+;;; fixing yaml
+(use-package highlight-numbers
+  :hook ((prog-mode yaml-mode) . highlight-numbers-mode))
+
 ;;;
 ;;; Packages
 ;;;
@@ -298,11 +302,23 @@
 ;;;
 ;;; Theme and styling
 ;;;
-(use-package tao-theme
-  :ensure t
-  :config (load-theme 'tao-yang t))
+;;;(use-package tao-theme
+;;;  :ensure t
+;;;  :config (load-theme 'tao-yang t))
 
-(set-face-attribute 'default nil :height 100 :family "mononoki")
+;;;
+;;; Theme and style
+;;;
+(add-hook 'after-init-hook (lambda () (load-theme 'spacemacs-dark)))
+(set-face-attribute 'default nil :height 120 :family "mononoki")
+
+;;;
+;;; save autosave files in /tmp folder
+;;;
+(setq backup-directory-alist
+          `((".*" . ,temporary-file-directory)))
+    (setq auto-save-file-name-transforms
+          `((".*" ,temporary-file-directory t)))
 
 ;; hideshow
 (add-hook 'prog-mode-hook #'hs-minor-mode)
@@ -332,9 +348,10 @@
    (quote
     (eshell-handle-control-codes eshell-handle-ansi-color eshell-watch-for-password-prompt)))
  '(fci-rule-color "#171717")
+ '(global-linum-mode t)
  '(package-selected-packages
    (quote
-    (flymake-go go-mode go elnode kubernetes-evil flymake-yaml flycheck-elixir helm-company alchemist kaolin-themes eshell-prompt-extras eshell-git-prompt gitlab-ci-mode-flycheck flycheck-gometalinter nlinum color-identifiers-mode flycheck-yamllint yaml-mode go-autocomplete company-go yasnippet which-key use-package try tao-theme smex select-themes pyenv-mode py-isort projectile org-bullets nyan-mode markdown-mode magit iedit ido-vertical-mode flycheck counsel company-anaconda auto-complete ace-window)))
+    (docker highlight-numbers spacemacs-theme flymake-go go-mode go elnode kubernetes-evil flymake-yaml flycheck-elixir helm-company alchemist kaolin-themes eshell-prompt-extras eshell-git-prompt gitlab-ci-mode-flycheck flycheck-gometalinter nlinum color-identifiers-mode flycheck-yamllint yaml-mode go-autocomplete company-go yasnippet which-key use-package try tao-theme smex select-themes pyenv-mode py-isort projectile org-bullets nyan-mode markdown-mode magit iedit ido-vertical-mode flycheck counsel company-anaconda auto-complete ace-window)))
  '(vc-annotate-background "#0E0E0E")
  '(vc-annotate-color-map
    (quote
