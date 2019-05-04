@@ -52,7 +52,9 @@
   :ensure t
   :config
   ;; use command key on Mac
-  (windmove-default-keybindings 'super)
+  ;;(windmove-default-keybindings 'super)
+  ;; use command key on Linux
+  (windmove-default-keybindings 'meta)
   ;; wrap around at edges
   (setq windmove-wrap-around t))
 
@@ -118,8 +120,11 @@
     ))
 
 (use-package counsel
-  :ensure t
-  )
+  :ensure t)
+
+;;; Docker packages
+(use-package dockerfile-mode
+  :ensure t)
 
 (use-package projectile
   :ensure t
@@ -146,6 +151,7 @@
              ("M-X" . smex-major-mode-commands))
 )))
 
+;;; Most IMPORTANT package of my Emacs config
 (use-package nyan-mode
   :ensure t
   :config
@@ -175,35 +181,6 @@
         company-tooltip-flip-when-above t
         company-show-numbers t)
   :diminish company-mode)
-
-(use-package anaconda-mode
-  :ensure t
-  :commands anaconda-mode
-  :diminish anaconda-mode
-  :init
-  (progn
-    (add-hook 'python-mode-hook 'anaconda-mode)
-    (add-hook 'python-mode-hook 'eldoc-mode)))
-
-(use-package company-anaconda
-  :ensure t
-  :init (add-to-list 'company-backends 'company-anaconda))
-
-(use-package pyenv-mode
-  :ensure t
-  :config
-  (progn
-    (defun my-pyenv-mode-set ()
-      (let ((target-file (expand-file-name ".python-version" (projectile-project-root))))
-        (when (file-exists-p target-file)
-          (pyenv-mode-set (with-temp-buffer
-                            (insert-file-contents target-file)
-                            (current-word))))))
-    (add-hook 'python-mode-hook 'pyenv-mode)
-    (add-hook 'projectile-switch-project-hook 'my-pyenv-mode-set)))
-
-(use-package py-isort
-  :ensure t)
 
 (use-package swiper
   :ensure try
@@ -278,21 +255,6 @@
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
 
-;; nlinum
-;(use-package nlinum-relative
-;    :config
-;;    ;; something else you want
-;;    (nlinum-relative-setup-evil)
-;;   (add-hook 'prog-mode-hook 'nlinum-relative-mode))
-
-
-;(require 'nlinum-relative)
-;(nlinum-relative-setup-evil)                    ;; setup for evil
-;(add-hook 'prog-mode-hook 'nlinum-relative-mode)
-;(setq nlinum-relative-redisplay-delay 0)      ;; delay
-;(setq nlinum-relative-current-symbol "->")      ;; or "" for display current line number
-;(setq nlinum-relative-offset 0)                 ;; 1 if you want 0, 2, 3...
-
 ;; y/n instead of yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -302,9 +264,9 @@
 ;;;
 ;;; Theme and styling
 ;;;
-;;;(use-package tao-theme
-;;;  :ensure t
-;;;  :config (load-theme 'tao-yang t))
+(use-package spacemacs-theme
+  :ensure t
+  :config (load-theme 'spacemacs-dark t))
 
 ;;;
 ;;; Theme and style
@@ -351,7 +313,7 @@
  '(global-linum-mode t)
  '(package-selected-packages
    (quote
-    (docker highlight-numbers spacemacs-theme flymake-go go-mode go elnode kubernetes-evil flymake-yaml flycheck-elixir helm-company alchemist kaolin-themes eshell-prompt-extras eshell-git-prompt gitlab-ci-mode-flycheck flycheck-gometalinter nlinum color-identifiers-mode flycheck-yamllint yaml-mode go-autocomplete company-go yasnippet which-key use-package try tao-theme smex select-themes pyenv-mode py-isort projectile org-bullets nyan-mode markdown-mode magit iedit ido-vertical-mode flycheck counsel company-anaconda auto-complete ace-window)))
+    (dockerfile-mode docker highlight-numbers spacemacs-theme flymake-go go-mode go elnode kubernetes-evil flymake-yaml flycheck-elixir helm-company alchemist kaolin-themes eshell-prompt-extras eshell-git-prompt gitlab-ci-mode-flycheck flycheck-gometalinter nlinum color-identifiers-mode flycheck-yamllint yaml-mode go-autocomplete company-go yasnippet which-key use-package try tao-theme smex select-themes pyenv-mode py-isort projectile org-bullets nyan-mode markdown-mode magit iedit ido-vertical-mode flycheck counsel company-anaconda auto-complete ace-window)))
  '(vc-annotate-background "#0E0E0E")
  '(vc-annotate-color-map
    (quote
